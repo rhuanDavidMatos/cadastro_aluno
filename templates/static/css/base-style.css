@@ -1,0 +1,19 @@
+
+#corpo{
+    padding: 20px;
+    margin-top: 80px;
+    }
+   
+#pesquisa{
+    justify-items: center;
+    align-items: center;
+}
+
+body{
+    background-color: #5a5858;
+}
+
+.btn-outline-success {
+    color: #17a2b8;
+    border-color: #17a2b8;
+}

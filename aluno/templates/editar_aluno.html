@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+{% include 'partials/messages.html' %}
+
+<form method="POST" action="{% url 'update_aluno' aluno.id %}">
+{% csrf_token %}
+
+  <div class="form-group">
+    <input type="hidden" value="{{aluno.id}}" name="id" class="form-control" id="id">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="nome">Nome</label>
+      <input value="{{aluno.nome}}" name="nome" type="text" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="Escreva seu nome">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="telefone">Telefone</label>
+      <input value="{{aluno.telefone}}" name="telefone" type="text" class="form-control" id="telefone" aria-describedby="emailHelp" placeholder="Seu telefone">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="email">E-mail</label>
+      <input value="{{aluno.email}}" name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Escreva seu e-mail">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="cpf">CPF</label>
+      <input value="{{aluno.cpf}}" name="cpf" type="text" class="form-control" id="cpf" aria-describedby="emailHelp" placeholder="Escreva seu cpf">
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="logradouro">Logradouro</label>
+      <input value="{{endereco.logradouro}}" type="text" class="form-control" name="logradouro" placeholder="Logradouro">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="bairro">Bairro</label>
+      <input value="{{endereco.bairro}}" type="text" class="form-control" name="bairro" placeholder="Bairro">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="numero">Número</label>
+      <input value="{{endereco.numero}}" type="text" class="form-control" name="numero" placeholder="Número">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="cidade">Cidade</label>
+      <input value="{{endereco.cidade}}" type="text" class="form-control" name="cidade" placeholder="Cidade">
+    </div>
+    <div class="form-group col-md-1">
+      <label for="estado">Estado</label>
+      <select id="estado" name="estado" class="form-control">
+        <option selected>{{endereco.estado}}</option>
+        <option>AC</option>
+        <option>AL</option>
+        <option>AP</option>
+        <option>AM</option>
+        <option>BA</option>
+        <option>CE</option>
+        <option>DF</option>
+        <option>ES</option>
+        <option>GO</option>
+        <option>MA</option>
+        <option>MT</option>
+        <option>MS</option>
+        <option>MG</option>
+        <option>PA</option>
+        <option>PB</option>
+        <option>PR</option>
+        <option>PE</option>
+        <option>PI</option>
+        <option>RJ</option>
+        <option>RN</option>
+        <option>RS</option>
+        <option>RO</option>
+        <option>RR</option>
+        <option>SC</option>
+        <option>SP</option>
+        <option>SE</option>
+        <option>TO</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="cep">CEP</label>
+      <input value="{{endereco.cep}}" type="text" class="form-control" name="cep" placeholder="CEP">
+    </div>
+  </div>
+  <br>  
+  <button type="submit" class="btn btn-primary">Editar</button>
+</form>            
+
+{% endblock container %}
+
+
+

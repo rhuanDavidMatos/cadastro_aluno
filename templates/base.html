@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" href="{% static  'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static  'css/base-style.css' %}">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'add_aluno' %}">Cadastro Aluno</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'add_curso' %}">Cadastro Curso</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'buscar_aluno' %}">
+          <input value="{{ request.GET.termo}}" class="form-control mr-sm-2" name="termo" type="search" placeholder="Digite o nome" aria-label="Search">
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Pesquisar aluno</button>
+        </form>
+      </div>
+    </nav>
+
+  <div id='corpo'>
+    {% block container %}
+
+    {% endblock container %}
+  </div>
+
+</body></html>

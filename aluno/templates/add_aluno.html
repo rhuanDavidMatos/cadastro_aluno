@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+{% include 'partials/messages.html' %}
+
+<form method="POST" action="{% url 'salvar_aluno' %}">
+{% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="nome">Nome</label>
+      <input value="{{request.POST.nome}}" required="required" name="nome" type="text" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="Escreva seu nome">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="telefone">Telefone</label>
+      <input value="{{request.POST.telefone}}" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" required="required" maxlength="14" name="telefone" type="text" class="form-control" id="telefone" aria-describedby="telefoneHelp" placeholder="Seu telefone">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="email">E-mail</label>
+      <input value="{{request.POST.email}}" required="required" name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Escreva seu e-mail">
+    </div>
+
+    <div class="form-group col-md-2"> 
+      <label for="cpf">CPF</label>
+      <input value="{{request.POST.cpf}}" pattern="\[0-9]{3}\.[0-9]{3}.[0-9]{3}-[0-9]{2}" minlength="14" maxlength="14" required="required" name="cpf" type="text" class="form-control" id="cpf" aria-describedby="emailHelp" placeholder="Escreva seu cpf">
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="logradouro">Logradouro</label>
+      <input value="{{request.POST.logradouro}}" required="required" type="text" class="form-control" name="logradouro" placeholder="Logradouro">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="bairro">Bairro</label>
+      <input value="{{request.POST.bairro}}" required="required" type="text" class="form-control" name="bairro" placeholder="Bairro">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="numero">Número</label>
+      <input value="{{request.POST.numero}}" pattern="[0-9]+$" required="required" type="text" class="form-control" name="numero" placeholder="Número">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="cidade">Cidade</label>
+      <input value="{{request.POST.cidade}}" required="required" type="text" class="form-control" name="cidade" placeholder="Cidade">
+    </div>
+    <div class="form-group col-md-1">
+      <label for="estado">Estado</label>
+      <select required="required" id="estado" name="estado" class="form-control">
+        <option selected>{{request.POST.estado}}</option>
+        <option>AC</option>
+        <option>AL</option>
+        <option>AP</option>
+        <option>AM</option>
+        <option>BA</option>
+        <option>CE</option>
+        <option>DF</option>
+        <option>ES</option>
+        <option>GO</option>
+        <option>MA</option>
+        <option>MT</option>
+        <option>MS</option>
+        <option>MG</option>
+        <option>PA</option>
+        <option>PB</option>
+        <option>PR</option>
+        <option>PE</option>
+        <option>PI</option>
+        <option>RJ</option>
+        <option>RN</option>
+        <option>RS</option>
+        <option>RO</option>
+        <option>RR</option>
+        <option>SC</option>
+        <option>SP</option>
+        <option>SE</option>
+        <option>TO</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="cep">CEP</label>
+      <input value="{{request.POST.cep}}" pattern="\[0-9]{5}-[0-9]{3}" id="cep" required="required" minlength="9" maxlength="9" type="text" class="form-control" name="cep" placeholder="CEP">
+    </div>
+  </div>
+  <br>  
+  <button type="submit" class="btn btn-primary">Adicionar</button>
+</form>
+<script type="text/javascript">
+    $("#telefone").mask("(00) 00000-0000");
+</script>            
+<script type="text/javascript">
+    $("#cpf").mask("000.000.000-00");
+</script>            
+<script type="text/javascript">
+    $("#cep").mask("00000-000");
+</script>            
+
+{% endblock container %}
+
+
+

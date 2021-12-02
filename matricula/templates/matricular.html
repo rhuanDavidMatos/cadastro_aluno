@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+  {% include 'partials/messages.html' %}
+
+  <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Curso</th>
+      <th scope="col">Horas</th>
+      <th scope="col">Matricular</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for c in cursos %}
+    <tr>
+      <td>{{c.id}}</td>
+      <td>{{c.nome}}</td>
+      <td>{{c.horas}}</td>
+      <td>
+        <div>
+          {% include 'partials/data_matricula.html' %}
+        </div>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+    
+{% endblock container %}
+
+
+

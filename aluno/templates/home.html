@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+  {% include 'partials/messages.html' %}
+  {% comment %} {% include 'partials/matricular.html' %} {% endcomment %}
+  
+  <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Telefone</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for a in alunos %}
+    <tr>
+      <td>{{a.id}}</td>
+      <td>{{a.nome}}</td>
+      <td>{{a.email}}</td>
+      <td>{{a.cpf}}</td>
+      <td>{{a.telefone}}</td>
+      <td>
+        <div>
+        <form style="display: inline" method="GET" action="{% url 'matricula_aluno' a.id%}">
+          <button type="submit" class="btn btn-primary">Matrícular</button>
+        </form>
+        <form style="display: inline" method="GET" action="{% url 'editar_aluno' a.id%}">
+          <button type="submit" class="btn btn-warning">Editar</button>
+        </form>
+        <form style="display: inline" method="POST" action="{% url 'deletar_aluno' a.id%}">{% csrf_token %}
+          <button type="submit" class="btn btn-danger">Excluir</button>
+        </form>
+        </div>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+    
+{% endblock container %}
+
+
+

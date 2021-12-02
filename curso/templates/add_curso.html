@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+{% include 'partials/messages.html' %}
+
+<form method="POST" action="{% url 'salvar_curso' %}">
+{% csrf_token %}
+
+  <div class="form-group col-md-6">
+    <label for="nome">Nome</label>
+    <input value="{{request.POST.nome}}" name="nome" type="text" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="Nome do curso">
+  </div>
+
+  <div class="form-group col-md-2">
+    <label for="telefone">Carga horária</label>
+    <input value="{{request.POST.horas}}" required="required" name="horas" type="int" class="form-control" id="horas" aria-describedby="emailHelp" placeholder="Carga horária">
+  </div>
+  <br>
+  <button style="margin-left:15px" type="submit" class="btn btn-primary">Adicionar</button>
+
+</form>      
+
+{% endblock container %}
